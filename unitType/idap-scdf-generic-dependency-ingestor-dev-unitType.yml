@@ -1,0 +1,36 @@
+spring.cloud.stream.bindings:
+  input:
+    group: ${application.group}
+    consumer:
+      max-attempts: ${application.max-retries}
+
+  redis:
+    host: localhost
+
+spring.cloud.stream.kafka.bindings:
+  input:
+    consumer:
+      enableDlq: true
+      dlqName: ${application.dead-letter-topic}
+      autoCommitOnError: true
+      autoCommitOffset: true
+      republish-to-dlq: true
+
+application:
+  keyTTL: 60
+  keyMapName: listing
+  deadLetterTopic: unitType-ingester-dead
+  maxRetries: 2
+  group: unitType-group-ingestor
+
+message:
+  parent: false
+  parentRecordName: listing
+  childRecordName: unitType
+  collection: true
+  parentKey: ListingKey
+  messageKey: UnitTypeKey
+
+
+server:
+  port: 0

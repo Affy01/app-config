@@ -1,0 +1,48 @@
+spring.cloud.stream.bindings:
+  input:
+    group: ${application.group}
+    consumer:
+      max-attempts: ${application.max-retries}
+  output:
+    contentType: application/json
+
+spring.cloud.stream.kafka.bindings:
+  input:
+    consumer:
+      enableDlq: true
+      dlqName: ${application.dead-letter-topic}
+      autoCommitOnError: true
+      autoCommitOffset: true
+      republish-to-dlq: true
+
+application:
+  schemaRegistryPath: http://localhost:8081
+  schemaRegistryCacheCapacity: 1
+  deadLetterTopic: listings-elastic-dead
+  maxRetries: 2
+  group: listings-group-elastic
+
+message:
+  indexName: listings
+  idFieldKey: id
+  idPrefix: aotf
+  delimiter: ~
+  propDisableAutoIndex:
+    - media
+    - unitType
+    - rooms
+    - openHouse
+
+
+elasticsearch:
+  schema: http
+  host: localhost
+  port: 9200
+  username: ''
+  password: ''
+  connectTimeout: 10000
+  socketTimeout: 10000
+  maxRetryTimeout: 10000
+
+server:
+  port: 0

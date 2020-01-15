@@ -1,0 +1,9 @@
+spring:
+  redis:
+    host: localhost
+
+application:
+  redisMap: listing
+
+server:
+  port: 0
