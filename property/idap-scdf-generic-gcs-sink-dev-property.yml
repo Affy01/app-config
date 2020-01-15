@@ -15,7 +15,7 @@ spring.cloud.stream:
 
 
 application:
-  bucketName: spring-gcp-storage-test
+  bucketName: spring-gcp-storage-test-property
   group: property-group-gcs
   schemaRegistryUrl: http://localhost:8081
   schemaRegistryCacheCapacity: 10
