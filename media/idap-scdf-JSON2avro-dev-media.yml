@@ -34,11 +34,11 @@ application:
   maxRetries: 2
 
 message:
-  messageKey: MediaKey
-  parentKey: ResourceRecordKey
-  recordToProcess:
-    OriginatingSystemName:
-      - ALL
+  messageKey: MediaKey,OriginatingSystemName
+  parentKey: ResourceRecordKey,OriginatingSystemName
+  blobFileKeys: MediaKey,OriginatingSystemName,Nucleus_PostDate
+  delimiter: '~'
+  filePrefix: Media
 
 server:
   port: 0
