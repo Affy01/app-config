@@ -15,7 +15,8 @@ spring.cloud.stream:
 
 
 application:
-  bucketName: spring-gcp-storage-test-property
+  bucketName: aotf-listing-events
+  gcsServiceAccountFile: /gcs_bucket_service_account.json
   group: property-group-gcs
   schemaRegistryUrl: http://localhost:8081
   schemaRegistryCacheCapacity: 10
@@ -24,10 +25,10 @@ application:
 
 
 message:
-  messageKey: ListingKey
-  parentKey: ListingKey
-  blobFileKeys: ListingKey,Nucleus_PostDate
-  delimiter: _
+  messageKey: ListingKey,OriginatingSystemName
+  parentKey: ListingKey,OriginatingSystemName
+  blobFileKeys: ListingKey,OriginatingSystemName,Nucleus_PostDate
+  delimiter: '~'
   filePrefix: Property
 
 server:
