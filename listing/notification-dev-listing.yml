@@ -1,0 +1,59 @@
+spring.cloud.stream.bindings:
+  input:
+    group: ${app.group}
+    consumer:
+      max-attempts: ${app.max-retries}
+  redis:
+    host: ${app.redis-host}
+
+
+app:
+  redis-host: localhost
+  maxRetries: 2
+  group: notification-group
+  emailConfig:
+    system-email-id: from@mailinator.com
+    scheduled-email-cron: "0 14 * * * *"
+
+elasticsearch:
+  schema: http
+  host:  localhost
+  port: 9200
+  username: clgx_readwrite
+  password: qagagibapi
+  connectTimeout: 10000
+  socketTimeout: 10000
+  maxRetryTimeout: 10000
+
+message:
+  indexName: listings
+  idPrefix: aotf
+  delimiter: '~'
+
+server:
+  port: 8056
+
+
+logging.level.root: log
+logging.level.org.springframework.web: warn
+logging.level.org.hibernate: error
+
+spring:
+  devtools:
+    livereload:
+      port: 35730
+
+clpservices:
+  oauth2:
+    client:
+      access-token-uri: https://corelogic-np-test.apigee.net/edgemicro-auth/token
+      client-id: intersect
+      client-secret: Aso4NxMoWR2Y69Ag
+    user:
+      username: intersect
+      password: Aso4NxMoWR2Y69Ag
+emailservice:
+  url: http://clp-email-service-int.apps.pcfwtcdev.clgxlabs.io
+health:
+  config:
+    enabled: false
