@@ -1,0 +1,42 @@
+spring.cloud.stream:
+  bindings:
+    input:
+      group: ${application.group}
+    output:
+      contentType: application/*+avro
+
+spring.cloud.stream.kafka:
+  binder:
+    brokers: localhost
+    producer-properties:
+      key.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      schema.registry.url: ${application.schema-registry-url}
+
+spring.cloud.stream.default:
+  producer:
+    useNativeEncoding: true
+
+application:
+  sourceTopicName: listing-change
+  destTopicName: notification
+  deadLetterTopic: listing-change-dead
+  maxRetries: 2
+  group: listing-change-group-2
+  schema-registry-url: http://localhost:8081
+
+elasticsearch:
+  schema: http
+  host:  localhost
+  port: 9200
+  username: clgx_readwrite
+  password: qagagibapi
+  connectTimeout: 10000
+  socketTimeout: 10000
+  maxRetryTimeout: 10000
+
+
+spring:
+  cloud:
+    stream:
+      default-binder: kafka
