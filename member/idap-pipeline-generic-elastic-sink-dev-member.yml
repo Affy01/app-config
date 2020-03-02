@@ -45,7 +45,7 @@ message:
 
 elasticsearch:
   schema: http
-  host:  elasticsearch
+  host:  localhost
   port: 9200
   username: clgx_elastic_admin
   password: huzucinunu
