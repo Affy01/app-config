@@ -3,9 +3,17 @@ spring.cloud.stream.bindings:
     group: ${application.group}
     consumer:
       max-attempts: ${application.max-retries}
+  output:
+    producer:
+      partition-count: 48
 
-  redis:
-    host: localhost
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          auto-add-partitions: true
+          minPartitionCount: 10
 
 spring.cloud.stream.kafka.bindings:
   input:
@@ -17,20 +25,19 @@ spring.cloud.stream.kafka.bindings:
       republish-to-dlq: true
 
 application:
-  sourceTopicName: media-gcs
   keyTTL: 60
-  keyMapName: listing
-  deadLetterTopic: media-ingester-dead
+  keyMapName: member
+  deadLetterTopic: member-ingester-dead
   maxRetries: 2
-  group: media-group-ingestor
+  group: member-group-ingestor
 
 message:
-  parent: false
-  parentRecordName: listing
-  childRecordName: media
-  collection: true
-  parentKey: ResourceRecordKey
-  messageKey: MediaKey
+  parent: true
+  parentRecordName: member
+  childRecordName: member
+  collection: false
+  parentKey: listingId
+  messageKey: messageId
 
 
 server:
