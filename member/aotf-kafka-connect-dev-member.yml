@@ -6,6 +6,8 @@ spring.cloud.stream:
           group: ${application.source-group-name}
         output:
           binder: kafka1
+          producer:
+            partition-count: 48
       binders:
         kafka1:
           type: kafka
@@ -16,6 +18,8 @@ spring.cloud.stream:
                   kafka:
                     binder:
                       brokers: ${application.dest-host}
+                      auto-add-partitions: true
+                      minPartitionCount: 10
         kafka2:
           type: kafka
           environment:
@@ -28,11 +32,10 @@ spring.cloud.stream:
       default-binder: kafka1
 
 application:
-  sourceHost: kafka-main.preprod.idap.clgx.cloud:9092
+  sourceHost: dev-kafka-shared-broker-1.kafka.dev.idap.clgxdata.com:9092
   destHost: localhost:9092
-  sourceTopic: v4_Elastic_Media
-  destTopic: media-in
-  sourceGroupName: src_group-media
+  sourceTopic: v1_Dev_Debug_Elastic_Property
+  sourceGroupName: property_source_group_dev_local_1
 
 
 server:
