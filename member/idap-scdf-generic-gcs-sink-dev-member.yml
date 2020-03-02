@@ -26,10 +26,10 @@ spring:
 
 application:
   bucketName: aotf-listing-events
-  group: property-group-gcs
+  group: member-group-gcs
   schemaRegistryUrl: http://localhost:8081
   schemaRegistryCacheCapacity: 10
-  deadLetterTopic: property-dead-gcs
+  deadLetterTopic: member-dead-gcs
   maxRetries: 2
 
 message:
