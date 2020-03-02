@@ -1,0 +1,28 @@
+spring.cloud.stream.bindings:
+  input:
+    group: ${application.group}
+    consumer:
+      max-attempts: ${application.max-retries}
+
+spring:
+   cloud:
+     stream:
+       kafka:
+         binder:
+           auto-add-partitions: true
+                  
+spring.cloud.stream.kafka.bindings:
+  input:
+    consumer:
+      enableDlq: true
+      dlqName: ${application.dead-letter-topic}
+      autoCommitOnError: true
+      autoCommitOffset: true
+      republish-to-dlq: true
+
+application:
+  keyTTL: 60
+  keyMapName: member
+  deadLetterTopic: redis-processor-dead
+  group: redis-processor-group
+  maxRetries: 2
