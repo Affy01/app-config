@@ -3,10 +3,14 @@ spring.cloud.stream.bindings:
     group: ${application.group}
   output:
     contentType: application/*+avro
+    producer:
+      partition-count: 48
 
 spring.cloud.stream:
   kafka:
     binder:
+      auto-add-partitions: true
+      minPartitionCount: 10
       brokers: localhost
       producer-properties:
         value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
@@ -28,22 +32,14 @@ spring.cloud.stream.kafka.bindings:
 application:
   schemaRegistryUrl: http://localhost:8081
   schemaRegistryCacheCapacity: 10
-  schemaFilePath: /Users/rahulgoyal/Downloads/avro/media-schema.avsc
-  sourceTopicName: media-in
-  destTopicName: media
-  deadLetterTopic: media-dead
-  group: media-group
+  schemaFilePath: /avro/property-schema.avsc
+  deadLetterTopic: property-dead-jsonAvro
+  group: property-group-jsonAvro
   maxRetries: 2
 
 message:
-  messageKey: MediaKey
-  parentKey: ResourceRecordKey
+  messageKey: ListingKey
+  parentKey: ListingKey
   recordToProcess:
     OriginatingSystemName:
-      - RAIRC
-      - SWMT
-      - TRESTLE_TEST
-      - WESTAL
-
-server:
-  port: 0
+      - ALL
