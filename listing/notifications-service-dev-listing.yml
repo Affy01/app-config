@@ -5,12 +5,6 @@ spring.cloud.stream:
       consumer:
         max-attempts: ${app.max-retries}
 
-spring:
-  redis:
-    host: q-s0.redis-instance.services.service-instance-b13eed15-5c09-4666-9a41-5ccb7e3073a8.bosh
-    port: 6379
-    password: AHPVPj5fhKkDJxYUacZ8BI9Ppg98E9
-
 
 spring.cloud.stream.kafka:
   binder:
