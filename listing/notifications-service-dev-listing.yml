@@ -53,7 +53,7 @@ clpservices:
       password: Aso4NxMoWR2Y69Ag
 
 emailservice:
-  url: http://clp-email-service-int.apps.pcfwtcdev.clgxlabs.io
+ url: http://clp-email-service-int.apps.pcfwtcdev.clgxlabs.io
 
 logging.level.root: log
 logging.level.org.springframework.web: warn
