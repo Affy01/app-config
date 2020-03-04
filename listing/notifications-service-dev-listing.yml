@@ -51,6 +51,7 @@ clpservices:
     user:
       username: intersect
       password: Aso4NxMoWR2Y69Ag
+
 emailservice:
   url: http://clp-email-service-int.apps.pcfwtcdev.clgxlabs.io
 
