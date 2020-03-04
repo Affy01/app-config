@@ -1,46 +1,47 @@
-spring.cloud.stream:
-  bindings:
-    input:
-      group: ${app.group}
-      consumer:
-        max-attempts: ${app.max-retries}
-
-
-spring.cloud.stream.kafka:
-  binder:
-    brokers: dev-kafka-shared-broker-1.kafka.dev.idap.clgxdata.com
-    auto-add-partitions: true
-    minPartitionCount: 10
-    consumer-properties:
-      value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      schema.registry.url: http://dev-kafka-shared-registry.kafka.dev.idap.clgxdata.com:8080
-      specific.avro.reader: true
-
-spring:
-  redis:
-    host: q-s0.redis-instance.services.service-instance-b13eed15-5c09-4666-9a41-5ccb7e3073a8.bosh
-    port: 6379
-    password: AHPVPj5fhKkDJxYUacZ8BI9Ppg98E9
-
-spring.cloud.stream.kafka.bindings:
+spring.cloud.stream.bindings:
   input:
+    group: ${app.group}
     consumer:
-      enableDlq: true
-      dlqName: notification-INT-group-dead
-      autoCommitOnError: true
-      autoCommitOffset: true
-      republish-to-dlq: true
+      max-attempts: ${app.max-retries}
+  redis:
+    host: ${app.redis-host}
 
-spring.cloud.stream.default:
-  consumer:
-    useNativeEncoding: true
 
 app:
-  maxRetries: 3
-  group: notification-INT-group
+  redis-host: localhost
+  maxRetries: 2
+  group: notification-group
   emailConfig:
-    system-email-id: aotf@mailinator.com
+    system-email-id: from@mailinator.com
     scheduled-email-cron: "0 14 * * * *"
+
+elasticsearch:
+  schema: http
+  host:  localhost
+  port: 9200
+  username: clgx_readwrite
+  password: qagagibapi
+  connectTimeout: 10000
+  socketTimeout: 10000
+  maxRetryTimeout: 10000
+
+message:
+  indexName: listings
+  idPrefix: aotf
+  delimiter: '~'
+
+server:
+  port: 8056
+
+
+logging.level.root: log
+logging.level.org.springframework.web: warn
+logging.level.org.hibernate: error
+
+spring:
+  devtools:
+    livereload:
+      port: 35730
 
 clpservices:
   oauth2:
@@ -51,17 +52,8 @@ clpservices:
     user:
       username: intersect
       password: Aso4NxMoWR2Y69Ag
-
 emailservice:
   url: http://clp-email-service-int.apps.pcfwtcdev.clgxlabs.io
-
-logging.level.root: log
-logging.level.org.springframework.web: warn
-logging.level.org.hibernate: error
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+health:
+  config:
+    enabled: false
