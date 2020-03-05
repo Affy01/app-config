@@ -23,6 +23,7 @@ application:
   group: listings-group-elastic
 
 message:
+  executeScript: true
   indexName: listings
   idFieldKey:
     - id
