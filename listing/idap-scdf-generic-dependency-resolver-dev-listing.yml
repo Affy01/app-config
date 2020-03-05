@@ -18,8 +18,8 @@ spring.cloud.stream.kafka.bindings:
 app:
   keyTTL: 60
   keyMapName: listing
-  bucketName: aotf-listing-events
-  gcsServiceAccountFile: /gcs_bucket_service_account.json
+  bucketName: spring-gcp-storage-test-property
+  gcsServiceAccountFile: /test-e794efa5201e.json
   deadLetterTopic: resolver-listing-dead
   group: listing-group-resolver
   maxRetries: 2
