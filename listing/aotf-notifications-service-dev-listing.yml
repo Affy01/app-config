@@ -35,7 +35,7 @@ app:
   schemaRegistryUrl: http://localhost:8081
   emailConfig:
     system-email-id: aotf@mailinator.com
-    scheduled-email-cron: "0 30 12 * * *"
+    scheduled-email-cron: "0 0 13 * * *"
 
 clpservices:
   oauth2:
