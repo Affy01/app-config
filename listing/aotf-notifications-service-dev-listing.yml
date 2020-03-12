@@ -34,7 +34,7 @@ app:
   group: notification-INT-group
   emailConfig:
     system-email-id: aotf@mailinator.com
-    scheduled-email-cron: "0 0 13 * * *"
+    scheduled-email-cron: "0 30 12 * * *"
 
 clpservices:
   oauth2:
