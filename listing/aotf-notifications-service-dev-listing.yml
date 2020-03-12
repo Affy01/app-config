@@ -13,7 +13,7 @@ spring.cloud.stream.kafka:
     minPartitionCount: 10
     consumer-properties:
       value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      schema.registry.url: http://localhost:8081
+      schema.registry.url: ${app.schema-registry-url}
       specific.avro.reader: true
 
 spring.cloud.stream.kafka.bindings:
@@ -32,6 +32,7 @@ spring.cloud.stream.default:
 app:
   maxRetries: 3
   group: notification-INT-group
+  schemaRegistryUrl: http://localhost:8081
   emailConfig:
     system-email-id: aotf@mailinator.com
     scheduled-email-cron: "0 30 12 * * *"
