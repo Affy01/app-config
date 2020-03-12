@@ -8,12 +8,12 @@ spring.cloud.stream:
 
 spring.cloud.stream.kafka:
   binder:
-    brokers: dev-kafka-shared-broker-1.kafka.dev.idap.clgxdata.com
+    brokers: localhost
     auto-add-partitions: true
     minPartitionCount: 10
     consumer-properties:
       value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-      schema.registry.url: http://dev-kafka-shared-registry.kafka.dev.idap.clgxdata.com:8080
+      schema.registry.url: http://localhost:8081
       specific.avro.reader: true
 
 spring.cloud.stream.kafka.bindings:
@@ -34,7 +34,7 @@ app:
   group: notification-INT-group
   emailConfig:
     system-email-id: aotf@mailinator.com
-    scheduled-email-cron: "0 14 * * * *"
+    scheduled-email-cron: "0 0 13 * * *"
 
 clpservices:
   oauth2:
