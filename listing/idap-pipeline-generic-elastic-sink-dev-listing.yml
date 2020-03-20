@@ -24,7 +24,7 @@ application:
 
 message:
   executeScript: true
-  indexName: listings
+  indexName: listings_scdf
   idFieldKey:
     - id
   idPrefix: aotf
