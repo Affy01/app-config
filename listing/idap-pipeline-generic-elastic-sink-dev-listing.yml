@@ -23,17 +23,29 @@ application:
   group: listings-group-elastic
 
 message:
+  indexName: listing_uat
   executeScript: true
-  indexName: listings_scdf
-  idFieldKey:
-    - id
+  idFieldKey: id
   idPrefix: aotf
+  delimiter: '~'
   propDisableAutoIndex:
     - media
     - unitType
     - rooms
     - openHouse
-  delimiter: '~'
+  keys:
+    - property
+    - customProperty
+    - media
+    - unitType
+    - rooms
+    - openHouse
+  collectionKeys:
+    - media
+    - unitType
+    - rooms
+    - openHouse
+  aotfTimestampKey: Aotf_PostDate
 
 
 elasticsearch:
