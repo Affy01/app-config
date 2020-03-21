@@ -21,7 +21,7 @@ app:
   bucketName: spring-gcp-storage-test-property
   gcsServiceAccountFile: /test-e794efa5201e.json
   deadLetterTopic: resolver-listing-dead
-  group: listing-group-resolver11
+  group: listing-group-resolver12
   maxRetries: 2
   mediaUrlConfigFile: /MS_RESULTS_MediaSizes_2020jan06.xlsx
   sheetName: Recommended
