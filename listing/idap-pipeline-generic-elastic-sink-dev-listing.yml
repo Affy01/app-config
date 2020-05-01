@@ -23,7 +23,7 @@ application:
   group: listings-group-elastic
 
 message:
-  indexName: listings_scdf
+  indexName: listings_update
   executeScript: true
   idFieldKey: id
   idPrefix: aotf
