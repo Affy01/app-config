@@ -1,9 +1,13 @@
 spring:
   redis:
     host: localhost
-
+  
 application:
   redisMap: listing
+  redisMaxCleanUpDelay: 1000
+  redisCleanUpKeysAmount: 5000
+  processName: listing-redis-kafka
+  apmTransactionLabelKey: ListingKey
 
 server:
   port: 0
