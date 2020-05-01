@@ -21,8 +21,10 @@ spring.cloud.stream.kafka.bindings:
       republish-to-dlq: true
 
 application:
-  keyTTL: 60
+  keyTTL: 5
   keyMapName: listing
+  redisMaxCleanUpDelay: 1000
+  redisCleanUpKeysAmount: 5000
   deadLetterTopic: redis-processor-dead
   group: redis-processor-group
   maxRetries: 2
