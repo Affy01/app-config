@@ -1,5 +1,6 @@
 spring.cloud.stream.bindings:
   input:
+    destination: json2avro-input
     group: ${application.group}
   output:
     contentType: application/*+avro
